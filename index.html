@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIF 難民特賣會 ｜ 商品目錄</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", -apple-system, sans-serif;
+    color: #333;
+    background: #f7f8fa;
+    line-height: 1.6;
+  }
+  .header {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: #222;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+  .header h2 {
+    font-size: 18px;
+    color: #888;
+    font-weight: normal;
+    letter-spacing: 8px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  /* 庫存清倉公告 */
+  .clearance-banner {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    background: linear-gradient(135deg, #fff8dc 0%, #ffe9a8 100%);
+    border: 2px solid #d4a017;
+    border-radius: 8px;
+    padding: 22px 28px;
+    box-shadow: 0 2px 8px rgba(212, 160, 23, 0.15);
+    position: relative;
+  }
+  .clearance-banner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(
+      45deg,
+      #d4a017,
+      #d4a017 10px,
+      #f5c842 10px,
+      #f5c842 20px
+    );
+    border-radius: 8px 8px 0 0;
+  }
+  .clearance-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #8b5a00;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .clearance-title .badge {
+    background: #d9534f;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .clearance-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #6b4500;
+  }
+  .clearance-text strong {
+    color: #d9534f;
+    font-weight: 700;
+  }
+  .clearance-text .highlight-line {
+    display: inline-block;
+    background: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #8b5a00;
+    margin: 2px 0;
+  }
+  .countdown {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(201, 48, 44, 0.25);
+  }
+  .countdown-label {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .countdown-timer {
+    display: flex;
+    gap: 8px;
+  }
+  .countdown-unit {
+    background: #fff;
+    border-radius: 6px;
+    min-width: 52px;
+    padding: 6px 8px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  .countdown-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: #c9302c;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown-text {
+    font-size: 11px;
+    color: #8b5a00;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .countdown.ended {
+    background: #6c757d;
+    box-shadow: none;
+  }
+  .countdown.ended .countdown-label {
+    font-size: 16px;
+  }
+  @media (max-width: 600px) {
+    .countdown { margin: 16px; padding: 12px; gap: 8px 10px; }
+    .countdown-label { font-size: 14px; width: 100%; justify-content: center; }
+    .countdown-unit { min-width: 46px; padding: 5px 6px; }
+    .countdown-num { font-size: 20px; }
+  }
+
+  .event-banner {
+    max-width: 1200px;
+    margin: 30px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    line-height: 0;
+  }
+  .event-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .info-section {
+    background: #fff;
+    margin: 30px auto;
+    max-width: 1200px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .info-section h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #d9534f;
+    border-left: 4px solid #d9534f;
+    padding-left: 10px;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 10px 20px;
+    font-size: 14px;
+  }
+  .info-grid dt { color: #888; font-weight: 600; }
+  .info-grid dd { color: #444; }
+  .info-grid dd.highlight { color: #d9534f; font-weight: 600; }
+
+  .toolbar {
+    background: #fff;
+    padding: 14px 24px 4px;
+    margin: 30px auto 0;
+    max-width: 1200px;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 100;
+  }
+  .toolbar-placeholder { display: none; }
+  .toolbar.toolbar--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: transform 0.28s ease;
+    will-change: transform;
+  }
+  .toolbar.toolbar--fixed.toolbar-hidden {
+    transform: translateY(-100%);
+  }
+  .toolbar-row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .search-box {
+    flex: 1;
+    min-width: 240px;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+  }
+  .search-box:focus { border-color: #d9534f; }
+  .toolbar-row2 {
+    border-top: 1px dashed #eee;
+    margin-top: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .filter-hamburger { display: none; }
+  .drawer-head { display: none; }
+  .filter-overlay { display: none; }
+  .filter-bar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .filter-toggle-btn {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #555;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .filter-toggle-btn:hover {
+    background: #ffeded;
+    color: #d9534f;
+    border-color: #ffc5c3;
+  }
+  .filter-toggle-btn .arrow {
+    transition: transform 0.25s;
+    font-size: 10px;
+  }
+  .filter-toggle-btn.open .arrow { transform: rotate(180deg); }
+  .filter-toggle-btn .current-cat {
+    background: #d9534f;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 4px;
+  }
+  .category-panel {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease, margin-top 0.3s ease, padding-top 0.3s ease;
+  }
+  .category-panel.open {
+    max-height: 400px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f0e0df;
+  }
+  .category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .cat-btn {
+    background: #f5f5f5;
+    border: 1px solid transparent;
+    color: #555;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .cat-btn:hover {
+    background: #ffeded;
+    color: #d9534f;
+  }
+  .cat-btn.active {
+    background: #d9534f;
+    color: #fff;
+    font-weight: 600;
+  }
+  .cat-btn .cat-count {
+    opacity: 0.7;
+    font-size: 11px;
+    margin-left: 2px;
+  }
+  .cat-btn.active .cat-count { opacity: 0.9; }
+  .stock-filter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff8dc;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #d4a017;
+    cursor: pointer;
+    user-select: none;
+    flex-shrink: 0;
+    font-size: 13px;
+    color: #8b5a00;
+    transition: all 0.15s;
+  }
+  .stock-filter:hover { background: #ffeebe; }
+  .stock-filter.active {
+    background: #d9534f;
+    color: #fff;
+    border-color: #d9534f;
+  }
+  .stock-filter input { cursor: pointer; }
+  .filter-result-info {
+    background: #fafafa;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: #888;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .filter-result-info b { color: #d9534f; }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 0 0 40px;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .product-img-wrap {
+    aspect-ratio: 1;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 12px;
+  }
+  .product-no {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(217,83,79,0.9);
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .stock-warning {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #ff8c00;
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  .sold-out-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #888;
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  .product-info { padding: 14px; flex: 1; display: flex; flex-direction: column; }
+  .product-name {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    min-height: 36px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-weight: 600;
+  }
+  .product-spec {
+    font-size: 11px;
+    color: #777;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    min-height: 16px;
+  }
+  .product-meta {
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  .product-price {
+    font-size: 22px;
+    color: #d9534f;
+    font-weight: 700;
+    margin-top: auto;
+    margin-bottom: 2px;
+  }
+  .product-price .unit { font-size: 12px; color: #888; font-weight: normal; }
+  .price-tax-note {
+    font-size: 10px;
+    color: #999;
+  }
+
+  .footer {
+    text-align: center;
+    color: #999;
+    padding: 30px 20px 50px;
+    font-size: 13px;
+  }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 22px; }
+    .header h2 { font-size: 14px; letter-spacing: 4px; }
+    .info-grid { grid-template-columns: 100px 1fr; font-size: 13px; }
+    .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .product-name { font-size: 12px; }
+    .product-price { font-size: 18px; }
+    .info-section { margin: 16px; padding: 20px; }
+    .clearance-banner { margin: 16px; padding: 18px 20px; }
+    .event-banner { margin: 16px; }
+    .clearance-title { font-size: 17px; }
+    .clearance-text { font-size: 14px; }
+
+    /* === 手機版：篩選改為左側滑出抽屜 + 漢堡按鈕 === */
+    .filter-hamburger {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 0 11px;
+    }
+    .filter-hamburger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: #d9534f;
+      border-radius: 2px;
+    }
+    .toolbar-row1 { flex-wrap: wrap; }
+    .toolbar-row1 .search-box { flex: 1 1 auto; }
+    .toolbar-row2 { border-top: none; margin-top: 0; padding: 0; }
+    #filterDrawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 80%;
+      max-width: 300px;
+      background: #fff;
+      z-index: 1001;
+      box-shadow: 2px 0 16px rgba(0,0,0,0.18);
+      transform: translateX(-100%);
+      transition: transform 0.28s ease;
+      overflow-y: auto;
+      padding: 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    #filterDrawer.open { transform: translateX(0); }
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .drawer-title { font-size: 16px; font-weight: 700; color: #333; }
+    .drawer-close {
+      background: none;
+      border: none;
+      font-size: 26px;
+      line-height: 1;
+      color: #999;
+      cursor: pointer;
+      padding: 0 4px;
+    }
+    #filterDrawer .filter-bar-toggle {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+    }
+    #filterDrawer .filter-toggle-btn {
+      justify-content: space-between;
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 15px;
+    }
+    #filterDrawer .stock-filter {
+      font-size: 15px;
+      padding: 8px 4px;
+    }
+    #filterDrawer .category-panel {
+      max-height: none;
+      overflow: visible;
+      margin-top: 4px;
+      padding-top: 12px;
+      border-top: 1px solid #f0e0df;
+    }
+    #filterDrawer .category-tabs {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 8px;
+    }
+    #filterDrawer .cat-btn {
+      width: 100%;
+      text-align: left;
+      font-size: 15px;
+      padding: 11px 16px;
+    }
+    .filter-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+    .filter-overlay.open { opacity: 1; visibility: visible; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>PIF 難民特賣會</h1>
+  <h2>商 品 目 錄</h2>
+</header>
+
+<section class="clearance-banner">
+  <div class="clearance-title">
+    <span>📢 庫存清倉通知</span>
+    <span class="badge">最終出清</span>
+  </div>
+  <div class="clearance-text">
+    配合 <strong>7 月份 PIF 法規規範</strong>，本批次商品將<strong>全面停止供應</strong>。為加速清空現有庫存，現釋出<span class="highlight-line">最終出清特惠價</span>，<strong>數量有限，售完為止</strong>。
+  </div>
+</section>
+
+<section class="info-section">
+  <h3>📌 商品資訊</h3>
+  <dl class="info-grid">
+    <dt>取貨地點</dt><dd>244 新北市林口區南勢里三民路 65 號之 8 號（開放倉庫自取）</dd>
+    <dt>價格說明</dt><dd class="highlight">本目錄所列價格皆為含稅價（已含 5% 營業稅）</dd>
+    <dt>每箱入數</dt><dd>「每箱入數」僅供參考，可依需求洽詢個數</dd>
+    <dt>庫存說明</dt><dd><strong style="color: #d9534f;">本目錄無即時庫存</strong>，實際庫存以現場為準，售完為止。</dd>
+  </dl>
+</section>
+
+<div class="container">
+  <div class="toolbar">
+    <div class="toolbar-row1">
+      <button type="button" class="filter-hamburger" id="filterHamburger" onclick="openFilterDrawer()" aria-label="開啟篩選選單">
+        <span></span><span></span><span></span>
+      </button>
+      <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜尋商品名稱、品牌、條碼...">
+    </div>
+    <div class="toolbar-row2" id="filterDrawer">
+      <div class="drawer-head">
+        <span class="drawer-title">🛒 商品分類</span>
+        <button type="button" class="drawer-close" onclick="closeFilterDrawer()" aria-label="關閉">×</button>
+      </div>
+      <div class="filter-bar-toggle">
+        <button type="button" class="filter-toggle-btn" id="filterToggleBtn" onclick="toggleCategoryPanel()">
+          🛒 商品分類<span class="current-cat" id="currentCatBadge">全部商品</span><span class="arrow">▼</span>
+        </button>
+        <label class="stock-filter" id="stockFilter">
+          <input type="checkbox" id="hideOutOfStock" checked> 隱藏無庫存
+        </label>
+      </div>
+      <div class="category-panel" id="categoryPanel">
+        <div class="category-tabs" id="categoryTabs"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-result-info" id="filterResultInfo" style="margin-top: 10px;"></div>
+
+  <div class="product-grid" id="productGrid"></div>
+</div>
+
+<section class="info-section">
+  <h3>🏢 倉庫營業時間</h3>
+  <div class="info-grid" style="grid-template-columns: 100px 1fr;">
+    <dt>📍 地點</dt><dd>新北市林口區三民路 65-8 號</dd>
+    <dt>⏰ 時間</dt><dd>週一 ~ 週五　09:30 – 18:30<br>週六　視情況營業（請先來電確認）</dd>
+    <dt>備　　註</dt><dd><span style="color:#c0392b;font-weight:600;">星期一不開放預訂取貨</span>，但歡迎到現場直接選購。</dd>
+  </div>
+</section>
+
+<section class="info-section">
+  <h3>☎️ 聯繫方式</h3>
+  <div class="info-grid" style="grid-template-columns: 100px 1fr;">
+    <dt>Email</dt><dd>ichewtong.list@gmail.com</dd>
+    <dt>電話</dt><dd>02-8283-8333</dd>
+  </div>
+</section>
+
+<footer class="footer">
+  © 毓秀堂貿易有限公司　PIF 難民特賣會
+</footer>
+
+<script src="products.js"></script>
+<script>
+const TAX_RATE = 0.05; // 5% 營業稅
+
+let currentCategory = "全部";
+let hideOutOfStock = true;
+
+const CATEGORIES = [
+  { name: "全部", icon: "🛒" },
+  { name: "洗髮護髮", icon: "🧴" },
+  { name: "沐浴清潔", icon: "🛁" },
+  { name: "臉部保養", icon: "💆" },
+  { name: "彩妝美妝", icon: "💄" },
+  { name: "身體護理", icon: "✨" },
+  { name: "洗手用品", icon: "🧼" },
+  { name: "護唇保養", icon: "💋" },
+  { name: "牙膏口腔", icon: "🦷" },
+  { name: "其它", icon: "📦" },
+];
+
+function toggleCategoryPanel() {
+  document.getElementById("categoryPanel").classList.toggle("open");
+  document.getElementById("filterToggleBtn").classList.toggle("open");
+  if (window.__syncToolbarPlaceholder) window.__syncToolbarPlaceholder();
+}
+
+function categorize(p) {
+  if (p.isGift) return "其它";
+  const n = (p.name || "") + " " + (p.spec || "");
+  const has = arr => arr.some(k => n.indexOf(k) >= 0);
+
+  if (has(["牙膏", "牙刷", "漱口", "潔牙", "MONDAHMIN"])) return "牙膏口腔";
+  if (has(["卸妝", "粉底", "腮紅", "口紅", "眼影", "遮瑕", "蜜粉", "潤色", "彩妝", "眼線筆", "眉筆", "修飾粉撲"])) return "彩妝美妝";
+  if (has(["護唇膏", "潤唇膏", "唇蜜", "唇彩", "凡士林"])) return "護唇保養";
+  if (has(["柔軟精", "洗衣", "芳香", "香氛劑", "居家芳香", "浴球"])) return "其它";
+  if (has(["洗手", "抗菌泡沫"])) return "洗手用品";
+  if (has(["洗髮", "潤髮", "護髮", "髮膜", "髮霜", "髮乳", "洗潤", "頭皮", "蓬蓬霧", "染髮", "養髮", "潤絲", "思波綺", "TSUBAKI", "LUMINQUE", "SEA BREEZE", "洗護組", "HAIR TONIC", "髮根"])) return "洗髮護髮";
+  if (has(["沐浴", "香皂", "肥皂", "入浴", "泡澡", "沐浴球", "沐浴乳", "石鹸", "石鹼", "潔膚皂", "皂", "牛乳石", "濕紙巾"])) return "沐浴清潔";
+  if (has(["精華", "面膜", "面霜", "潔顏", "潔面", "化妝水", "凝霜", "凝露", "保濕霜", "美容液", "乳液", "潤膚", "ELIXIR", "洗顏", "洗臉", "洗面乳", "抗皺", "CICA", "柔膚", "提亮霜", "泥膜", "保濕凝膠", "保濕乳霜", "粉撲專用洗劑", "毛孔清潔"])) return "臉部保養";
+  if (has(["身體乳", "身體霜", "身體", "冷卻凝膠", "護手霜", "足部", "去角質", "腋下", "腋臭", "止汗", "香氛噴霧", "防曬", "香氛沐浴精油", "馬油", "滾珠", "香氛護理", "柔膚護理油"])) return "身體護理";
+  return "其他";
+}
+
+// 過濾掉純贈品商品（目錄版不顯示）
+const CATALOG = PRODUCTS.filter(p => !p.isGift);
+CATALOG.forEach(p => { p.category = categorize(p); });
+
+function taxedPrice(p) {
+  return Math.round(p.price * (1 + TAX_RATE));
+}
+
+function renderCategoryTabs() {
+  const container = document.getElementById("categoryTabs");
+  container.innerHTML = CATEGORIES.map(cat => {
+    let count;
+    if (cat.name === "全部") {
+      count = CATALOG.length;
+    } else {
+      count = CATALOG.filter(p => p.category === cat.name).length;
+    }
+    if (count === 0) return "";
+    const active = cat.name === currentCategory ? "active" : "";
+    const label = cat.name === "全部" ? "全部商品" : cat.name;
+    return `<button type="button" class="cat-btn ${active}" onclick="selectCategory('${cat.name}')">${cat.icon} ${label}<span class="cat-count">(${count})</span></button>`;
+  }).join("");
+}
+
+function selectCategory(cat) {
+  currentCategory = cat;
+  renderCategoryTabs();
+  document.getElementById("currentCatBadge").textContent = (cat === "全部" ? "全部商品" : cat);
+  document.getElementById("categoryPanel").classList.remove("open");
+  document.getElementById("filterToggleBtn").classList.remove("open");
+  const searchVal = document.getElementById("searchBox").value;
+  renderProducts(searchVal);
+  requestAnimationFrame(function () {
+    const anchor = document.querySelector(".toolbar");
+    if (anchor) {
+      const top = anchor.getBoundingClientRect().top + window.scrollY - 8;
+      window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+    }
+  });
+  if (window.matchMedia("(max-width: 600px)").matches) closeFilterDrawer();
+}
+
+function renderProducts(filter = "") {
+  const grid = document.getElementById("productGrid");
+  const f = filter.trim().toLowerCase();
+  const filtered = CATALOG.filter(p => {
+    if (f && !(p.name.toLowerCase().includes(f) || (p.spec || "").toLowerCase().includes(f) || String(p.barcode).includes(f))) {
+      return false;
+    }
+    if (currentCategory !== "全部" && p.category !== currentCategory) {
+      return false;
+    }
+    if (hideOutOfStock && p.stockLeft === 0) {
+      return false;
+    }
+    return true;
+  });
+
+  const info = document.getElementById("filterResultInfo");
+  let infoText = "";
+  if (f || currentCategory !== "全部" || hideOutOfStock) {
+    infoText = `符合條件：<b>${filtered.length}</b> / ${CATALOG.length} 項`;
+    if (currentCategory !== "全部") infoText += `　分類：<b>${currentCategory}</b>`;
+    if (hideOutOfStock) infoText += `　已隱藏無庫存`;
+    if (f) infoText += `　搜尋：<b>${filter}</b>`;
+  }
+  info.innerHTML = infoText;
+  info.style.display = infoText ? "block" : "none";
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#999;font-size:15px;">😔 沒有符合條件的商品<br><span style="font-size:13px;">請嘗試其他分類、清除搜尋或關閉「隱藏無庫存」</span></div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(p => {
+    let badge = "";
+    if (p.stockLeft === 0) {
+      badge = `<span class="sold-out-badge">已售完</span>`;
+    } else if (p.stockLeft !== undefined) {
+      badge = `<span class="stock-warning">⚠ 僅剩 ${p.stockLeft} 個</span>`;
+    }
+    return `
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-no">No.${p.no}</span>
+        ${badge}
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-spec">${p.spec || ""}</div>
+        <div class="product-meta">條碼：${p.barcode}　每箱 ${p.boxQty} 入</div>
+        <div class="product-price">NT$ ${taxedPrice(p)}<span class="unit"> / 個</span></div>
+        <div class="price-tax-note">含稅價</div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+document.getElementById("searchBox").addEventListener("input", e => renderProducts(e.target.value));
+
+document.getElementById("hideOutOfStock").addEventListener("change", e => {
+  hideOutOfStock = e.target.checked;
+  document.getElementById("stockFilter").classList.toggle("active", hideOutOfStock);
+  const searchVal = document.getElementById("searchBox").value;
+  renderProducts(searchVal);
+});
+
+// 置頂工具列：捲過原位後固定於頂端，向下捲動收起、向上捲動顯示
+(function () {
+  const toolbar = document.querySelector(".toolbar");
+  if (!toolbar) return;
+
+  const placeholder = document.createElement("div");
+  placeholder.className = "toolbar-placeholder";
+  toolbar.parentNode.insertBefore(placeholder, toolbar.nextSibling);
+
+  let lastY = window.scrollY;
+  let ticking = false;
+  let fixed = false;
+  const DELTA = 6;
+
+  let anchor = toolbar.getBoundingClientRect().top + window.scrollY;
+  function refreshAnchor() {
+    if (!fixed) anchor = toolbar.getBoundingClientRect().top + window.scrollY;
+  }
+
+  function setFixed(on) {
+    if (on === fixed) return;
+    fixed = on;
+    if (on) {
+      placeholder.style.height = toolbar.offsetHeight + "px";
+      placeholder.style.display = "block";
+      toolbar.classList.add("toolbar--fixed");
+    } else {
+      toolbar.classList.remove("toolbar--fixed", "toolbar-hidden");
+      placeholder.style.display = "none";
+    }
+  }
+
+  function onScroll() {
+    const y = window.scrollY;
+    const diff = y - lastY;
+    refreshAnchor();
+    const threshold = anchor;
+
+    if (y >= threshold) {
+      setFixed(true);
+      if (Math.abs(diff) >= DELTA) {
+        if (diff > 0) { toolbar.classList.add("toolbar-hidden"); }
+        else { toolbar.classList.remove("toolbar-hidden"); }
+        lastY = y;
+      }
+    } else {
+      setFixed(false);
+      lastY = y;
+    }
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", function () {
+    if (fixed) placeholder.style.height = toolbar.offsetHeight + "px";
+  }, { passive: true });
+
+  window.__syncToolbarPlaceholder = function () {
+    if (!fixed) return;
+    const keepY = window.scrollY;
+    function sync() {
+      placeholder.style.height = toolbar.offsetHeight + "px";
+      if (window.scrollY !== keepY) window.scrollTo(0, keepY);
+    }
+    sync();
+    setTimeout(sync, 320);
+  };
+
+  onScroll();
+})();
+
+// 手機版篩選抽屜開關
+let _drawerHome = null;
+let _drawerNextSibling = null;
+
+function openFilterDrawer() {
+  const d = document.getElementById("filterDrawer");
+  const o = document.getElementById("filterOverlay");
+  if (d && d.parentNode !== document.body) {
+    _drawerHome = d.parentNode;
+    _drawerNextSibling = d.nextSibling;
+    document.body.appendChild(d);
+  }
+  if (d) d.classList.add("open");
+  if (o) o.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeFilterDrawer() {
+  const d = document.getElementById("filterDrawer");
+  const o = document.getElementById("filterOverlay");
+  if (d) d.classList.remove("open");
+  if (o) o.classList.remove("open");
+  document.body.style.overflow = "";
+  if (d && _drawerHome) {
+    const home = _drawerHome, sib = _drawerNextSibling;
+    setTimeout(function () {
+      if (!d.classList.contains("open")) {
+        home.insertBefore(d, sib);
+        _drawerHome = null; _drawerNextSibling = null;
+      }
+    }, 300);
+  }
+}
+
+// 同步「隱藏無庫存」開關的視覺狀態
+(function initStockFilterUI() {
+  const cb = document.getElementById("hideOutOfStock");
+  const sf = document.getElementById("stockFilter");
+  if (cb) hideOutOfStock = cb.checked;
+  if (sf) sf.classList.toggle("active", hideOutOfStock);
+})();
+
+renderCategoryTabs();
+renderProducts();
+</script>
+<div class="filter-overlay" id="filterOverlay" onclick="closeFilterDrawer()"></div>
+</body>
+</html>
+                                                                                                                     
