@@ -5,195 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PIF 難民特賣會 ｜ 商品目錄</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
     font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", -apple-system, sans-serif;
     color: #333;
     background: #f7f8fa;
     line-height: 1.6;
   }
-  .header {
+.header {
     background: #fff;
     border-bottom: 1px solid #eee;
     padding: 40px 20px;
     text-align: center;
   }
-  .header h1 {
+.header h1 {
     font-size: 28px;
     color: #222;
     margin-bottom: 8px;
     letter-spacing: 2px;
   }
-  .header h2 {
+.header h2 {
     font-size: 18px;
     color: #888;
     font-weight: normal;
     letter-spacing: 8px;
   }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-  /* 庫存清倉公告 */
-  .clearance-banner {
-    max-width: 1200px;
-    margin: 30px auto 0;
-    background: linear-gradient(135deg, #fff8dc 0%, #ffe9a8 100%);
-    border: 2px solid #d4a017;
-    border-radius: 8px;
-    padding: 22px 28px;
-    box-shadow: 0 2px 8px rgba(212, 160, 23, 0.15);
-    position: relative;
-  }
-  .clearance-banner::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: repeating-linear-gradient(
-      45deg,
-      #d4a017,
-      #d4a017 10px,
-      #f5c842 10px,
-      #f5c842 20px
-    );
-    border-radius: 8px 8px 0 0;
-  }
-  .clearance-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #8b5a00;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .clearance-title .badge {
-    background: #d9534f;
-    color: #fff;
-    font-size: 12px;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-  .clearance-text {
-    font-size: 15px;
-    line-height: 1.8;
-    color: #6b4500;
-  }
-  .clearance-text strong {
-    color: #d9534f;
-    font-weight: 700;
-  }
-  .clearance-text .highlight-line {
-    display: inline-block;
-    background: #fff;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-    color: #8b5a00;
-    margin: 2px 0;
-  }
-  .countdown {
-    max-width: 1200px;
-    margin: 30px auto 0;
-    padding: 16px 20px;
-    background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    box-shadow: 0 2px 8px rgba(201, 48, 44, 0.25);
-  }
-  .countdown-label {
-    color: #fff;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .countdown-timer {
-    display: flex;
-    gap: 8px;
-  }
-  .countdown-unit {
-    background: #fff;
-    border-radius: 6px;
-    min-width: 52px;
-    padding: 6px 8px;
-    text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-  }
-  .countdown-num {
-    font-size: 24px;
-    font-weight: 800;
-    color: #c9302c;
-    line-height: 1.1;
-    font-variant-numeric: tabular-nums;
-  }
-  .countdown-text {
-    font-size: 11px;
-    color: #8b5a00;
-    font-weight: 600;
-    margin-top: 2px;
-  }
-  .countdown.ended {
-    background: #6c757d;
-    box-shadow: none;
-  }
-  .countdown.ended .countdown-label {
-    font-size: 16px;
-  }
-  @media (max-width: 600px) {
-    .countdown { margin: 16px; padding: 12px; gap: 8px 10px; }
-    .countdown-label { font-size: 14px; width: 100%; justify-content: center; }
-    .countdown-unit { min-width: 46px; padding: 5px 6px; }
-    .countdown-num { font-size: 20px; }
-  }
-
-  .event-banner {
-    max-width: 1200px;
-    margin: 30px auto;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    line-height: 0;
-  }
-  .event-banner img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .info-section {
-    background: #fff;
-    margin: 30px auto;
-    max-width: 1200px;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-  .info-section h3 {
-    font-size: 18px;
-    margin-bottom: 16px;
-    color: #d9534f;
-    border-left: 4px solid #d9534f;
-    padding-left: 10px;
-  }
-  .info-grid {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 10px 20px;
-    font-size: 14px;
-  }
-  .info-grid dt { color: #888; font-weight: 600; }
-  .info-grid dd { color: #444; }
-  .info-grid dd.highlight { color: #d9534f; font-weight: 600; }
-
-  .toolbar {
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.toolbar {
     background: #fff;
     padding: 14px 24px 4px;
     margin: 30px auto 0;
@@ -203,8 +41,8 @@
     position: relative;
     z-index: 100;
   }
-  .toolbar-placeholder { display: none; }
-  .toolbar.toolbar--fixed {
+.toolbar-placeholder { display: none; }
+.toolbar.toolbar--fixed {
     position: fixed;
     top: 0;
     left: 0;
@@ -215,10 +53,10 @@
     transition: transform 0.28s ease;
     will-change: transform;
   }
-  .toolbar.toolbar--fixed.toolbar-hidden {
+.toolbar.toolbar--fixed.toolbar-hidden {
     transform: translateY(-100%);
   }
-  .toolbar-row1 {
+.toolbar-row1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -226,7 +64,7 @@
     gap: 12px;
     margin-bottom: 10px;
   }
-  .search-box {
+.search-box {
     flex: 1;
     min-width: 240px;
     padding: 10px 14px;
@@ -235,24 +73,24 @@
     font-size: 14px;
     outline: none;
   }
-  .search-box:focus { border-color: #d9534f; }
-  .toolbar-row2 {
+.search-box:focus { border-color: #d9534f; }
+.toolbar-row2 {
     border-top: 1px dashed #eee;
     margin-top: 4px;
     padding-top: 8px;
     padding-bottom: 8px;
   }
-  .filter-hamburger { display: none; }
-  .drawer-head { display: none; }
-  .filter-overlay { display: none; }
-  .filter-bar-toggle {
+.filter-hamburger { display: none; }
+.drawer-head { display: none; }
+.filter-overlay { display: none; }
+.filter-bar-toggle {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
     flex-wrap: wrap;
   }
-  .filter-toggle-btn {
+.filter-toggle-btn {
     background: #f5f5f5;
     border: 1px solid #ddd;
     color: #555;
@@ -266,17 +104,17 @@
     transition: all 0.15s;
     user-select: none;
   }
-  .filter-toggle-btn:hover {
+.filter-toggle-btn:hover {
     background: #ffeded;
     color: #d9534f;
     border-color: #ffc5c3;
   }
-  .filter-toggle-btn .arrow {
+.filter-toggle-btn .arrow {
     transition: transform 0.25s;
     font-size: 10px;
   }
-  .filter-toggle-btn.open .arrow { transform: rotate(180deg); }
-  .filter-toggle-btn .current-cat {
+.filter-toggle-btn.open .arrow { transform: rotate(180deg); }
+.filter-toggle-btn .current-cat {
     background: #d9534f;
     color: #fff;
     font-size: 11px;
@@ -284,23 +122,23 @@
     border-radius: 10px;
     margin-left: 4px;
   }
-  .category-panel {
+.category-panel {
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease, margin-top 0.3s ease, padding-top 0.3s ease;
   }
-  .category-panel.open {
+.category-panel.open {
     max-height: 400px;
     margin-top: 10px;
     padding-top: 10px;
     border-top: 1px solid #f0e0df;
   }
-  .category-tabs {
+.category-tabs {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
   }
-  .cat-btn {
+.cat-btn {
     background: #f5f5f5;
     border: 1px solid transparent;
     color: #555;
@@ -311,22 +149,22 @@
     transition: all 0.15s;
     white-space: nowrap;
   }
-  .cat-btn:hover {
+.cat-btn:hover {
     background: #ffeded;
     color: #d9534f;
   }
-  .cat-btn.active {
+.cat-btn.active {
     background: #d9534f;
     color: #fff;
     font-weight: 600;
   }
-  .cat-btn .cat-count {
+.cat-btn .cat-count {
     opacity: 0.7;
     font-size: 11px;
     margin-left: 2px;
   }
-  .cat-btn.active .cat-count { opacity: 0.9; }
-  .stock-filter {
+.cat-btn.active .cat-count { opacity: 0.9; }
+.stock-filter {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -341,14 +179,14 @@
     color: #8b5a00;
     transition: all 0.15s;
   }
-  .stock-filter:hover { background: #ffeebe; }
-  .stock-filter.active {
+.stock-filter:hover { background: #ffeebe; }
+.stock-filter.active {
     background: #d9534f;
     color: #fff;
     border-color: #d9534f;
   }
-  .stock-filter input { cursor: pointer; }
-  .filter-result-info {
+.stock-filter input { cursor: pointer; }
+.filter-result-info {
     background: #fafafa;
     padding: 6px 14px;
     font-size: 12px;
@@ -356,15 +194,14 @@
     border-radius: 6px;
     text-align: center;
   }
-  .filter-result-info b { color: #d9534f; }
-
-  .product-grid {
+.filter-result-info b { color: #d9534f; }
+.product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
     padding: 0 0 40px;
   }
-  .product-card {
+.product-card {
     background: #fff;
     border-radius: 8px;
     overflow: hidden;
@@ -374,11 +211,11 @@
     flex-direction: column;
     position: relative;
   }
-  .product-card:hover {
+.product-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
-  .product-img-wrap {
+.product-img-wrap {
     aspect-ratio: 1;
     background: #fafafa;
     display: flex;
@@ -387,13 +224,13 @@
     overflow: hidden;
     position: relative;
   }
-  .product-img-wrap img {
+.product-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     padding: 12px;
   }
-  .product-no {
+.product-no {
     position: absolute;
     top: 8px;
     left: 8px;
@@ -404,7 +241,7 @@
     border-radius: 10px;
     font-weight: 600;
   }
-  .stock-warning {
+.stock-warning {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -416,7 +253,7 @@
     font-weight: 600;
     box-shadow: 0 1px 3px rgba(0,0,0,0.15);
   }
-  .sold-out-badge {
+.sold-out-badge {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -428,8 +265,8 @@
     font-weight: 600;
     box-shadow: 0 1px 3px rgba(0,0,0,0.15);
   }
-  .product-info { padding: 14px; flex: 1; display: flex; flex-direction: column; }
-  .product-name {
+.product-info { padding: 14px; flex: 1; display: flex; flex-direction: column; }
+.product-name {
     font-size: 13px;
     color: #333;
     line-height: 1.4;
@@ -441,52 +278,44 @@
     overflow: hidden;
     font-weight: 600;
   }
-  .product-spec {
+.product-spec {
     font-size: 11px;
     color: #777;
     line-height: 1.4;
     margin-bottom: 6px;
     min-height: 16px;
   }
-  .product-meta {
+.product-meta {
     font-size: 11px;
     color: #999;
     margin-bottom: 8px;
   }
-  .product-price {
+.product-price {
     font-size: 22px;
     color: #d9534f;
     font-weight: 700;
     margin-top: auto;
     margin-bottom: 2px;
   }
-  .product-price .unit { font-size: 12px; color: #888; font-weight: normal; }
-  .price-tax-note {
+.product-price .unit { font-size: 12px; color: #888; font-weight: normal; }
+.price-tax-note {
     font-size: 10px;
     color: #999;
   }
-
-  .footer {
+.footer {
     text-align: center;
     color: #999;
     padding: 30px 20px 50px;
     font-size: 13px;
   }
+.hidden { display: none !important; }
+@media (max-width: 600px) {
 
-  .hidden { display: none !important; }
-
-  @media (max-width: 600px) {
     .header h1 { font-size: 22px; }
     .header h2 { font-size: 14px; letter-spacing: 4px; }
-    .info-grid { grid-template-columns: 100px 1fr; font-size: 13px; }
     .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
     .product-name { font-size: 12px; }
     .product-price { font-size: 18px; }
-    .info-section { margin: 16px; padding: 20px; }
-    .clearance-banner { margin: 16px; padding: 18px 20px; }
-    .event-banner { margin: 16px; }
-    .clearance-title { font-size: 17px; }
-    .clearance-text { font-size: 14px; }
 
     /* === 手機版：篩選改為左側滑出抽屜 + 漢堡按鈕 === */
     .filter-hamburger {
@@ -529,7 +358,6 @@
       padding: 16px;
       -webkit-overflow-scrolling: touch;
     }
-    #filterDrawer.open { transform: translateX(0); }
     .drawer-head {
       display: flex;
       align-items: center;
@@ -603,26 +431,6 @@
   <h2>商 品 目 錄</h2>
 </header>
 
-<section class="clearance-banner">
-  <div class="clearance-title">
-    <span>📢 庫存清倉通知</span>
-    <span class="badge">最終出清</span>
-  </div>
-  <div class="clearance-text">
-    配合 <strong>7 月份 PIF 法規規範</strong>，本批次商品將<strong>全面停止供應</strong>。為加速清空現有庫存，現釋出<span class="highlight-line">最終出清特惠價</span>，<strong>數量有限，售完為止</strong>。
-  </div>
-</section>
-
-<section class="info-section">
-  <h3>📌 商品資訊</h3>
-  <dl class="info-grid">
-    <dt>取貨地點</dt><dd>244 新北市林口區南勢里三民路 65 號之 8 號（開放倉庫自取）</dd>
-    <dt>價格說明</dt><dd class="highlight">本目錄所列價格皆為含稅價（已含 5% 營業稅）</dd>
-    <dt>每箱入數</dt><dd>「每箱入數」僅供參考，可依需求洽詢個數</dd>
-    <dt>庫存說明</dt><dd><strong style="color: #d9534f;">本目錄無即時庫存</strong>，實際庫存以現場為準，售完為止。</dd>
-  </dl>
-</section>
-
 <div class="container">
   <div class="toolbar">
     <div class="toolbar-row1">
@@ -655,25 +463,8 @@
   <div class="product-grid" id="productGrid"></div>
 </div>
 
-<section class="info-section">
-  <h3>🏢 倉庫營業時間</h3>
-  <div class="info-grid" style="grid-template-columns: 100px 1fr;">
-    <dt>📍 地點</dt><dd>新北市林口區三民路 65-8 號</dd>
-    <dt>⏰ 時間</dt><dd>週一 ~ 週五　09:30 – 18:30<br>週六　視情況營業（請先來電確認）</dd>
-    <dt>備　　註</dt><dd><span style="color:#c0392b;font-weight:600;">星期一不開放預訂取貨</span>，但歡迎到現場直接選購。</dd>
-  </div>
-</section>
-
-<section class="info-section">
-  <h3>☎️ 聯繫方式</h3>
-  <div class="info-grid" style="grid-template-columns: 100px 1fr;">
-    <dt>Email</dt><dd>ichewtong.list@gmail.com</dd>
-    <dt>電話</dt><dd>02-8283-8333</dd>
-  </div>
-</section>
-
 <footer class="footer">
-  © 毓秀堂貿易有限公司　PIF 難民特賣會
+  © PIF 難民特賣會
 </footer>
 
 <script src="products.js"></script>
@@ -945,4 +736,4 @@ renderProducts();
 <div class="filter-overlay" id="filterOverlay" onclick="closeFilterDrawer()"></div>
 </body>
 </html>
-                                                                                                                     
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
