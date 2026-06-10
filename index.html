@@ -685,36 +685,46 @@ document.getElementById("hideOutOfStock").addEventListener("change", e => {
 })();
 
 // 手機版篩選抽屜開關
-let _drawerHome = null;
-let _drawerNextSibling = null;
+// 抽屜原本位於 toolbar 內；toolbar 捲動後會變 position:fixed，
+// 形成定位脈絡使抽屜的 fixed 被困住、無法覆蓋全螢幕。
+// 解法：開啟時把抽屜暫移到 <body>，關閉後再放回 toolbar 內原位。
+// 為避免重繪導致參照失效，搬回時改用穩定的錨點（toolbar）重新插入。
+let _drawerHome = null;       // 抽屜原本的父節點（.toolbar）
+let _drawerPlaced = false;    // 是否已被移到 body
 
 function openFilterDrawer() {
   const d = document.getElementById("filterDrawer");
   const o = document.getElementById("filterOverlay");
-  if (d && d.parentNode !== document.body) {
-    _drawerHome = d.parentNode;
-    _drawerNextSibling = d.nextSibling;
+  if (!d) return;
+  if (d.parentNode !== document.body) {
+    _drawerHome = d.parentNode;   // 記住原本的家（.toolbar）
     document.body.appendChild(d);
+    _drawerPlaced = true;
   }
-  if (d) d.classList.add("open");
+  d.classList.add("open");
   if (o) o.classList.add("open");
   document.body.style.overflow = "hidden";
 }
+
+function restoreDrawerHome() {
+  // 把抽屜放回 toolbar 內（放在最後，與原始順序一致）
+  const d = document.getElementById("filterDrawer");
+  if (d && _drawerPlaced && _drawerHome && d.parentNode === document.body) {
+    _drawerHome.appendChild(d);
+    _drawerPlaced = false;
+  }
+}
+
 function closeFilterDrawer() {
   const d = document.getElementById("filterDrawer");
   const o = document.getElementById("filterOverlay");
   if (d) d.classList.remove("open");
   if (o) o.classList.remove("open");
   document.body.style.overflow = "";
-  if (d && _drawerHome) {
-    const home = _drawerHome, sib = _drawerNextSibling;
-    setTimeout(function () {
-      if (!d.classList.contains("open")) {
-        home.insertBefore(d, sib);
-        _drawerHome = null; _drawerNextSibling = null;
-      }
-    }, 300);
-  }
+  // 等滑出動畫(0.28s)結束後再搬回原位，避免動畫被打斷
+  setTimeout(function () {
+    if (d && !d.classList.contains("open")) restoreDrawerHome();
+  }, 320);
 }
 
 // 同步「隱藏無庫存」開關的視覺狀態
