@@ -172,7 +172,9 @@ def main():
             else:
                 ext = "jpg"
             filename = f"product_{no:03d}.{ext}"
-            for other_ext in ("jpg", "png", "webp", "gif"):
+            # 清掉同編號的「同格式」舊圖（避免殘留），但保留 webp（手動轉檔成果）。
+            # 注意：Excel 裡貼的通常是 jpg/png，我們不希望同步時把已轉好的 webp 刪掉。
+            for other_ext in ("jpg", "png", "gif"):
                 old_path = images_dir / f"product_{no:03d}.{other_ext}"
                 if old_path.exists() and old_path.name != filename:
                     try:
@@ -182,9 +184,15 @@ def main():
             (images_dir / filename).write_bytes(data)
             new_images.add(filename)
             saved_count += 1
+            # 顯示用檔名：若同編號已存在 webp，優先用 webp（檔案較小、載入較快）
+            display_filename = filename
+            webp_path = images_dir / f"product_{no:03d}.webp"
+            if webp_path.exists():
+                display_filename = webp_path.name
+                new_images.add(display_filename)
             for p in products:
                 if p["no"] == no:
-                    p["filename"] = filename
+                    p["filename"] = display_filename
                     break
 
     print(f"  [OK] 寫入商品圖片：{saved_count} 張")
@@ -195,7 +203,7 @@ def main():
         if p.get("filename"):
             continue
         no = p["no"]
-        for ext in ("jpg", "png", "webp", "gif"):
+        for ext in ("webp", "jpg", "png", "gif"):
             old_filename = f"product_{no:03d}.{ext}"
             if (images_dir / old_filename).exists():
                 p["filename"] = old_filename
@@ -219,6 +227,8 @@ def main():
     for f in redundant:
         if f.startswith("product_9999"):
             continue  # 保留贈品圖
+        if f.lower().endswith(".webp"):
+            continue  # 一律保留 webp（手動轉檔成果，不在同步時刪除）
         try:
             (images_dir / f).unlink()
             deleted += 1
