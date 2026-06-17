@@ -314,9 +314,9 @@ const PRODUCTS = [
   { no: 315, name: "【CHARLEY】紙香皂 草莓", spec: "", barcode: "4975541027709", price: 31, boxQty: 0, stockLeft: 0, img: "images/product_315.webp" },
   { no: 316, name: "【CLOVER】柿子洗顏皂 80g", spec: "", barcode: "4901498125038", price: 27, boxQty: 0, stockLeft: 9, img: "images/product_316.webp" },
   { no: 317, name: "【CLOVER】胎盤素洗顏皂 80g", spec: "", barcode: "4901498125076", price: 27, boxQty: 0, stockLeft: 0, img: "images/product_317.webp" },
-  { no: 318, name: "【花王】Biore抗菌泡沫洗手慕斯280mL(草本木質)", spec: "", barcode: "4901301452047", price: 190, boxQty: 0, img: "images/product_318.webp" },
-  { no: 319, name: "【花王】Biore抗菌泡沫洗手慕斯280mL(礦物麝香)", spec: "", barcode: "4901301467287", price: 190, boxQty: 0, img: "images/product_319.webp" },
-  { no: 320, name: "【花王】Biore抗菌泡沫洗手慕斯280mL(焙茶香)", spec: "", barcode: "4901301467294", price: 190, boxQty: 0, img: "images/product_320.webp" },
+  { no: 318, name: "【花王】Biore抗菌泡沫洗手慕斯280mL(草本木質)", spec: "", barcode: "4901301452047", price: 190, boxQty: 12, img: "images/product_318.webp" },
+  { no: 319, name: "【花王】Biore抗菌泡沫洗手慕斯280mL(礦物麝香)", spec: "", barcode: "4901301467287", price: 190, boxQty: 12, img: "images/product_319.webp" },
+  { no: 320, name: "【花王】Biore抗菌泡沫洗手慕斯280mL(焙茶香)", spec: "", barcode: "4901301467294", price: 190, boxQty: 12, img: "images/product_320.webp" },
   { no: 321, name: "【Istyle】Lishan全能修護晚霜 Premium 50g", spec: "", barcode: "4582425681157", price: 265, boxQty: 0, stockLeft: 8, img: "images/product_321.webp" },
   { no: 9999, name: "【P&G】JOY W抗菌洗碗機專用清潔膠囊 3 入", spec: "", barcode: "4987176161017", price: 0, boxQty: 1, isGift: true, img: "images/product_9999.webp" },
 ];
